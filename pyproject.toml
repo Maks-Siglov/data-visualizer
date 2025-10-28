@@ -8,9 +8,49 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "pandas (>=2.3.3,<3.0.0)",
+    "plotly (>=6.3.1,<7.0.0)",
+    "dependency-injector (>=4.48.2,<5.0.0)",
+    "uvicorn (>=0.34.0,<1.0.0)",
+    "python-dotenv (>=1.0.1,<2.0.0)",
+    "pydantic-settings (>=2.10.0,<3.0.0)",
+    "fastapi (>=0.120.1,<0.121.0)"
 ]
 
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.14.2"
+
+
+[tool.ruff]
+line-length = 79
+target-version = "py313"
+# Skip/exclude directories and files
+exclude = [
+    ".idea/",
+    "tests/",
+    "venv/",
+    ".venv/",
+    "docs/",
+    "scripts/",
+    "temp/",
+    "alembic/",
+    "conftest.py",
+]
+
+[tool.ruff.lint]
+# pycodestyle, pyflakes, isort, pylint, pyupgrade
+ignore = ["E501"]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # Pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+]
